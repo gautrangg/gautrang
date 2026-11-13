@@ -1,0 +1,158 @@
+/* =========================================================
+   ICE BEAR — lớp hiệu ứng nâng cao (nạp sau style.css)
+   ========================================================= */
+
+/* ---------- loader: vỡ băng ---------- */
+.loader__inner { position: relative; z-index: 2; }
+.shard {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 50% 110%, #12407a 0%, var(--night) 60%);
+  will-change: transform, opacity;
+  transition: transform 1s cubic-bezier(.55, 0, .85, .35) var(--d), opacity .4s linear calc(var(--d) + .55s);
+}
+.loader.done { clip-path: none; background: transparent; transition: none; }
+.loader.done .shard { transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(.7); opacity: 0; }
+.loader__flash { position: absolute; inset: 0; background: #dff3ff; opacity: 0; z-index: 1; pointer-events: none; }
+.loader.done .loader__flash { animation: flash .55s ease-out; }
+@keyframes flash { 0% { opacity: .75; } 100% { opacity: 0; } }
+
+/* ---------- hero: ghim + zoom điện ảnh ---------- */
+.hero-pin { position: relative; height: 240vh; background: var(--ice); overflow: clip; }
+.hero { position: sticky; top: 0; transition: transform 2.8s var(--ease); }
+body.is-loading .hero { transform: scale(1.35); }
+.hero__far, .hero__mid { transform-origin: 50% 100%; }
+.hero__water { transform-origin: 50% 0; will-change: transform; }
+.hero__floe { transform-origin: 50% 56%; }
+.hero__title-wrap { transform-origin: 50% 40%; }
+.hero__white { position: absolute; inset: 0; background: var(--ice); opacity: 0; z-index: 8; pointer-events: none; }
+.hero__title .l { transition: transform 1.5s cubic-bezier(.2, 1.3, .3, 1), opacity .7s; transform: translateY(120%) rotateX(-90deg) rotate(12deg) scale(.6); }
+
+/* tai gấu vẫy */
+.bear__ear { transform-box: fill-box; transform-origin: 50% 100%; animation: ear 6s infinite; }
+.bear__ear--r { animation-delay: .12s; }
+@keyframes ear { 0%, 86%, 100% { transform: rotate(0); } 89% { transform: rotate(-16deg); } 93% { transform: rotate(10deg); } 97% { transform: rotate(-6deg); } }
+
+/* ---------- reveal mạnh hơn ---------- */
+[data-reveal] { filter: blur(14px); transition: opacity 1s var(--ease), transform 1.1s var(--ease), filter 1s var(--ease); transition-delay: var(--d, 0s); }
+[data-reveal].in { filter: none; }
+.stat[data-reveal] { transform: perspective(900px) rotateX(-70deg) translateY(70px) scale(.9); transform-origin: 50% 0; transition: opacity .9s var(--ease), transform 1.3s cubic-bezier(.2, 1.4, .3, 1), filter 1s, box-shadow .6s; transition-delay: var(--d, 0s); }
+.stat[data-reveal].in { transform: none; }
+.stat.in:hover { transform: translateY(-10px) rotate(-1.5deg); transition-delay: 0s; }
+.about__meta > div[data-reveal] { transform: translateX(-50px); }
+.about__meta > div[data-reveal].in { transform: none; }
+
+/* chữ nhấn lấp lánh như cực quang */
+.h2--light .accent, .skills__intro em, .skills__end em, .dive__head em {
+  background: linear-gradient(90deg, #5effc1, #8fd3ff, #a78bfa, #5effc1, #8fd3ff);
+  background-size: 400% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: hue 7s linear infinite;
+}
+@keyframes hue { to { background-position: -400% 0; } }
+
+/* ---------- skills: thẻ bay hình vòng cung ---------- */
+.card-wrap { flex: none; will-change: transform; }
+.card__ico { animation: ico 4s ease-in-out infinite; }
+.card-wrap:nth-child(odd) .card__ico { animation-delay: -2s; }
+@keyframes ico { 50% { transform: translateY(-8px) rotate(6deg); } }
+.card__lv i { transform: scaleX(0); transform-origin: left; transition: transform 1.4s var(--ease) .2s; }
+.card-wrap.is-in .card__lv i { transform: none; }
+.card__n { transition: transform .8s var(--ease), color .5s; }
+.card:hover .card__n { transform: translateX(8px) scale(1.08); color: rgba(94, 255, 193, .35); }
+
+/* ---------- dance ---------- */
+.dance {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  background: radial-gradient(60% 55% at 72% 100%, #16306a 0%, transparent 70%), #03060f;
+  color: var(--white);
+  padding: clamp(90px, 10vw, 150px) var(--pad);
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px;
+  overflow: hidden;
+}
+.dance__word {
+  position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%);
+  text-align: center; white-space: nowrap;
+  font-family: var(--font-d); font-weight: 900; font-size: clamp(5rem, 23vw, 25rem); line-height: .8; letter-spacing: -.05em;
+  color: rgba(143, 211, 255, .05);
+  pointer-events: none; user-select: none;
+  transition: color .8s;
+}
+.dance.is-on .dance__word { color: rgba(143, 211, 255, .1); }
+.dance__beams { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .8s; }
+.dance.is-on .dance__beams { opacity: 1; }
+.dance__beams i {
+  position: absolute; top: -10%; left: var(--x);
+  width: 26vw; height: 130%; margin-left: -13vw;
+  background: linear-gradient(var(--c), transparent 82%);
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+  transform-origin: 50% 0;
+  mix-blend-mode: screen; opacity: .55; filter: blur(8px);
+  animation: beam var(--t) ease-in-out infinite alternate;
+}
+@keyframes beam { from { transform: rotate(-26deg); } to { transform: rotate(26deg); } }
+.dance__copy { position: relative; z-index: 3; }
+.dance__copy .lead { margin: 26px 0 34px; }
+.dance__copy small { display: block; margin-top: 16px; opacity: .55; font-size: .85rem; }
+.dance__stage { position: relative; z-index: 2; display: grid; place-items: center; justify-self: center; }
+.dance__stage .bear { height: min(56vh, 470px); width: auto; position: relative; z-index: 1; transform-origin: 50% 100%; }
+.dance__floor {
+  position: absolute; left: 50%; bottom: -7%; width: 170%; aspect-ratio: 3.2 / 1;
+  transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(94, 255, 193, .28), rgba(76, 201, 240, .1) 55%, transparent);
+  opacity: .35; transition: opacity .8s;
+}
+.dance.is-on .dance__floor { opacity: 1; }
+.dance__eq { position: absolute; left: 0; right: 0; bottom: 0; height: 24vh; display: flex; align-items: flex-end; gap: 3px; padding: 0 3px; pointer-events: none; opacity: .5; z-index: 1; }
+.dance__eq span { flex: 1; height: 100%; background: linear-gradient(to top, var(--aurora), var(--glacier) 60%, #a78bfa); transform: scaleY(.015); transform-origin: bottom; border-radius: 3px 3px 0 0; will-change: transform; }
+
+.dance.is-on .dance__spin { animation: d-spin 8s infinite; }
+@keyframes d-spin { 0%, 86%, 100% { transform: scaleX(1); } 89.5% { transform: scaleX(.04); } 93% { transform: scaleX(-1); } 96.5% { transform: scaleX(.04); } }
+.bear.is-dancing { animation: d-body 1s infinite cubic-bezier(.4, 0, .2, 1); }
+@keyframes d-body {
+  0%, 100% { transform: translate(0, 0) rotate(0) scale(1.05, .93); }
+  12% { transform: translate(-12px, 0) rotate(-5deg) scale(1.04, .95); }
+  27% { transform: translate(-22px, -30px) rotate(-9deg) scale(.96, 1.06); }
+  50% { transform: translate(0, 0) rotate(0) scale(1.05, .93); }
+  62% { transform: translate(12px, 0) rotate(5deg) scale(1.04, .95); }
+  77% { transform: translate(22px, -30px) rotate(9deg) scale(.96, 1.06); }
+}
+.is-dancing .bear__arm { transition: none; }
+.is-dancing .bear__arm--l { animation: d-arm-l 1s infinite ease-in-out; }
+.is-dancing .bear__arm--r { animation: d-arm-r 1s infinite ease-in-out; }
+@keyframes d-arm-l { 0%, 100% { transform: rotate(25deg); } 27% { transform: rotate(155deg); } 50% { transform: rotate(45deg); } 77% { transform: rotate(-12deg); } }
+@keyframes d-arm-r { 0%, 100% { transform: rotate(-25deg); } 27% { transform: rotate(12deg); } 50% { transform: rotate(-45deg); } 77% { transform: rotate(-155deg); } }
+.bear__leg { transform-box: fill-box; }
+.is-dancing .bear__leg--l { animation: d-leg 1s infinite ease-in-out; }
+.is-dancing .bear__leg--r { animation: d-leg 1s -.5s infinite ease-in-out; }
+@keyframes d-leg { 0%, 50%, 100% { transform: none; } 25% { transform: translate(-6px, -16px) rotate(-12deg); } }
+
+/* ---------- dive: vệt bong bóng sau gấu ---------- */
+.dive__trail { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .7); background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .6), transparent 65%); pointer-events: none; animation: trail 1.5s ease-out forwards; }
+@keyframes trail { to { transform: translate(var(--dx), -150px) scale(1.9); opacity: 0; } }
+
+/* ---------- arctic ---------- */
+.arctic__ghost { animation: dash 18s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -280; } }
+.arctic__viz svg { animation: float 8s ease-in-out infinite; }
+
+/* ---------- footer: chữ gợn sóng ---------- */
+.footer__big span { animation: f-wave 3.4s ease-in-out infinite; }
+.footer__big span:nth-child(2) { animation-delay: .12s; } .footer__big span:nth-child(3) { animation-delay: .24s; }
+.footer__big span:nth-child(5) { animation-delay: .48s; } .footer__big span:nth-child(6) { animation-delay: .6s; }
+.footer__big span:nth-child(7) { animation-delay: .72s; } .footer__big span:nth-child(8) { animation-delay: .84s; }
+@keyframes f-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9%) rotate(-2deg); } }
+
+/* ---------- canvas hạt theo con trỏ ---------- */
+#spark { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
+
+@media (max-width: 960px) {
+  .dance { grid-template-columns: 1fr; }
+  .dance__stage .bear { height: min(42vh, 360px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { filter: none !important; }
+  .shard { display: none; }
+  body.is-loading .hero { transform: none; }
+}

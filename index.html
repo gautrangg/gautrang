@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ice Bear — Bắc Cực, bản thật</title>
+  <meta name="description" content="Ice Bear ngoài đời thật: gấu Bắc Cực, băng biển và cực quang qua ảnh và phim tư liệu.">
+  <meta name="theme-color" content="#04070d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2304070d'/%3E%3Ccircle cx='18' cy='18' r='8' fill='%23f2efe6'/%3E%3Ccircle cx='46' cy='18' r='8' fill='%23f2efe6'/%3E%3Ccircle cx='32' cy='35' r='20' fill='%23f2efe6'/%3E%3Ccircle cx='25' cy='31' r='2.4' fill='%2304070d'/%3E%3Ccircle cx='39' cy='31' r='2.4' fill='%2304070d'/%3E%3Cellipse cx='32' cy='40' rx='5' ry='3.4' fill='%2304070d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/hero-1920.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fx.css">
+</head>
+<body class="is-loading">
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__in">
+      <p class="loader__k">Vĩ độ</p>
+      <p class="loader__n"><span id="loaderNum">0</span>°<i>N</i></p>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <p class="loader__t">Đang đi về phía Bắc</p>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><div class="cursor__ring"></div><div class="cursor__dot"></div></div>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top">Ice&nbsp;Bear<i>®</i></a>
+    <nav class="nav__links" aria-label="Điều hướng chính">
+      <a href="#about">Chân dung</a>
+      <a href="#gallery">Trên băng</a>
+      <a href="#film">Phim</a>
+      <a href="#dive">Dưới nước</a>
+      <a href="#arctic">Bắc Cực</a>
+    </nav>
+    <button class="sound" id="soundBtn" aria-pressed="false" data-magnetic>
+      <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span id="soundLbl">Bật tiếng gió</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <div class="hero-pin" id="heroPin">
+      <section class="hero" id="top">
+        <div class="hero__media">
+          <canvas class="gl" id="heroGL" data-tex="hero" data-src="assets/hero-1920.jpg" aria-hidden="true"></canvas>
+        </div>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <div class="hero__head" id="heroHead">
+          <p class="hero__eyebrow" data-intro style="--d:.2s"><i></i>81°N · Biển băng phía bắc Svalbard</p>
+          <h1 class="hero__title" aria-label="Ice Bear">
+            <span class="l" style="--i:0">I</span><span class="l" style="--i:1">C</span><span class="l" style="--i:2">E</span><span class="sp"></span><span class="l" style="--i:3">B</span><span class="l" style="--i:4">E</span><span class="l" style="--i:5">A</span><span class="l" style="--i:6">R</span>
+          </h1>
+          <p class="hero__sub" data-intro style="--d:1s">Không phải hoạt hình. <em>Đây là thật.</em></p>
+        </div>
+
+        <p class="hero__quote" id="heroQuote" aria-hidden="true">Ice Bear <em>không có</em> điểm yếu.</p>
+
+        <div class="hero__foot">
+          <p data-intro style="--d:1.2s">Di chuột trên mặt nước · Cuộn xuống</p>
+          <div class="hero__hint" data-intro style="--d:1.35s" aria-hidden="true"><i></i></div>
+          <p class="hero__credit" data-intro style="--d:1.2s">Ảnh: Mario Hoppmann / NASA</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__row" data-dir="-1"><div class="marquee__track">
+        <span>Ursus maritimus</span><b></b><span class="o">Gấu trắng Bắc Cực</span><b></b><span>Ice Bear</span><b></b><span class="o">Chúa tể băng biển</span><b></b>
+      </div></div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="about__txt">
+        <p class="tag" data-reveal>01 — Chân dung</p>
+        <p class="about__text" id="manifesto">Ít lời. Điềm tĩnh. Làm được mọi thứ. Ngoài đời thật, Ice Bear nặng nửa tấn, đi bộ hàng nghìn cây số mỗi năm trên mặt biển đóng băng, và chưa từng kể với ai về điều đó.</p>
+        <div class="about__meta">
+          <div data-reveal style="--d:0s"><small>Tên khoa học</small><strong>Ursus maritimus</strong></div>
+          <div data-reveal style="--d:.08s"><small>Nhà</small><strong>Băng biển</strong></div>
+          <div data-reveal style="--d:.16s"><small>Tính cách</small><strong>Một mình</strong></div>
+        </div>
+      </div>
+      <figure class="ph about__ph" data-ph data-par="0.14">
+        <img src="assets/face.jpg" alt="Cận cảnh khuôn mặt một con gấu Bắc Cực nhìn thẳng vào ống kính" loading="lazy" decoding="async">
+        <figcaption>Churchill, Canada · Ansgar Walk</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ GALLERY (pinned horizontal) ============ -->
+    <section class="gallery" id="gallery">
+      <div class="gallery__stage">
+        <div class="gallery__track" id="galleryTrack">
+          <div class="gallery__intro">
+            <p class="tag">02 — Trên băng</p>
+            <h2>Một ngày<br>của <em>Ice Bear</em></h2>
+            <p class="gallery__sub">Cuộn tiếp. Ảnh chụp thật, không chỉnh sửa nhân vật. <span aria-hidden="true">→</span></p>
+          </div>
+
+          <article class="shot shot--wide"><div class="shot__img"><img src="assets/leap.jpg" alt="Gấu Bắc Cực đang nhảy qua khe nước giữa hai tảng băng" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>01</span><h3>Ice Bear nhảy.</h3><p>Băng mùa hè vỡ thành từng mảng. Muốn đi tiếp thì phải bật qua.</p></div></article>
+          <article class="shot shot--tall"><div class="shot__img"><img src="assets/close.jpg" alt="Gấu Bắc Cực bước giữa các khối băng vỡ" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>02</span><h3>Ice Bear dò đường.</h3><p>Mỗi bước đều thử độ chắc của băng trước khi dồn trọng lượng.</p></div></article>
+          <article class="shot shot--wide"><div class="shot__img"><img src="assets/drift.jpg" alt="Gấu Bắc Cực nhảy giữa băng trôi, in bóng xuống mặt nước lặng" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>03</span><h3>Ice Bear giữ thăng bằng.</h3><p>Vùng băng trôi phía bắc Svalbard, mặt biển phẳng như gương.</p></div></article>
+          <article class="shot shot--wide"><div class="shot__img"><img src="assets/blue.jpg" alt="Gấu Bắc Cực đi trên băng cạnh vũng nước tan màu ngọc lam" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>04</span><h3>Ice Bear đi dạo.</h3><p>Nước băng tan đọng thành những hồ màu ngọc trên mặt băng.</p></div></article>
+          <article class="shot shot--wide"><div class="shot__img"><img src="assets/walk.jpg" alt="Gấu Bắc Cực há miệng khi bước trên băng" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>05</span><h3>Ice Bear lên tiếng.</h3><p>Hiếm khi. Lần này là sau một cuộc săn hải cẩu không thành.</p></div></article>
+          <article class="shot shot--wide"><div class="shot__img"><img src="assets/cub.jpg" alt="Gấu mẹ và gấu con trên tảng băng" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>06</span><h3>Ice Bear từng nhỏ thế này.</h3><p>Gấu con theo mẹ hơn hai năm để học cách sống trên băng.</p></div></article>
+          <article class="shot shot--tall"><div class="shot__img"><img src="assets/stand.jpg" alt="Gấu Bắc Cực đứng trên tuyết nhìn thẳng vào ống kính" loading="lazy" decoding="async"></div>
+            <div class="shot__cap"><span>07</span><h3>Ice Bear nhìn bạn.</h3><p>Ice Bear đã thấy bạn từ trước khi bạn thấy Ice Bear.</p></div></article>
+
+          <div class="gallery__end"><h2>Hết ngày.<br><em>Ice Bear đi tiếp.</em></h2></div>
+        </div>
+        <div class="gallery__bar"><span id="galleryBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ FILM (pinned, video expands) ============ -->
+    <section class="film" id="film">
+      <div class="film__stage">
+        <h2 class="film__title" id="filmTitle" aria-hidden="true"><span>Đang</span><span>chiếu</span></h2>
+        <div class="film__frame" id="filmFrame">
+          <video id="filmVideo" src="assets/alaska.webm" muted loop playsinline preload="metadata" poster="assets/drift.jpg" aria-label="Phim tư liệu: hai con gấu Bắc Cực đi trên băng biển ở Alaska"></video>
+          <div class="film__shade"></div>
+        </div>
+        <div class="film__over" id="filmOver">
+          <p class="tag">03 — Phim tư liệu · Alaska</p>
+          <h2>Hai chấm trắng<br>trên <em>một biển trắng.</em></h2>
+          <p>Băng biển là mặt đất duy nhất mà Ice Bear có. Không có băng, không có đường về.</p>
+        </div>
+        <div class="film__hud" aria-hidden="true"><span class="rec"></span>REC · <span id="filmTime">00:00</span> · Kiliii Yuyan</div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" id="stats">
+      <video class="stats__bg" src="assets/seaice.webm" muted loop playsinline preload="none" data-autoplay aria-hidden="true"></video>
+      <div class="stats__shade" aria-hidden="true"></div>
+      <div class="stats__in">
+        <p class="tag" data-reveal>04 — Số đo</p>
+        <h2 class="h2" data-split>Ice Bear, <em>tính bằng số.</em></h2>
+        <div class="stats__grid">
+          <div class="stat" data-reveal style="--d:0s"><div class="stat__n"><span data-count="700">0</span><i>kg</i></div><p>Một gấu đực trưởng thành cỡ lớn.</p></div>
+          <div class="stat" data-reveal style="--d:.1s"><div class="stat__n"><span data-count="40">0</span><i>km/h</i></div><p>Chạy nước rút trên băng.</p></div>
+          <div class="stat" data-reveal style="--d:.2s"><div class="stat__n"><span data-count="10">0</span><i>km/h</i></div><p>Bơi, chân trước làm mái chèo.</p></div>
+          <div class="stat" data-reveal style="--d:.3s"><div class="stat__n"><span data-count="42">0</span><i>răng</i></div><p>Và lớp da dưới bộ lông trắng màu đen.</p></div>
+        </div>
+        <p class="stats__credit">Phim: NASA · chiến dịch bay ARCSIX trên băng biển Bắc Cực</p>
+      </div>
+    </section>
+
+    <!-- ============ DIVE (pinned) ============ -->
+    <section class="dive" id="dive">
+      <div class="dive__stage">
+        <div class="dive__top">
+          <canvas class="gl" id="swimGL" data-tex="swim" data-src="assets/swim.jpg" data-mode="swim" aria-hidden="true"></canvas>
+        </div>
+        <div class="dive__under" id="diveUnder"><div class="dive__uin" id="diveUin">
+          <img src="assets/under.jpg" alt="Gấu Bắc Cực bơi dưới mặt nước, nhìn từ bên dưới" loading="lazy" decoding="async" id="diveImg">
+          <div class="dive__caustics" aria-hidden="true"></div>
+          <div class="dive__rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="dive__bubbles" id="bubbles" aria-hidden="true"></div>
+          <div class="dive__deep" id="diveDeep" aria-hidden="true"></div>
+        </div></div>
+        <div class="dive__line" id="diveLine" aria-hidden="true"></div>
+
+        <div class="dive__head" id="diveHead">
+          <p class="tag">05 — Dưới nước</p>
+          <h2>Ice Bear<br><em>hít một hơi.</em></h2>
+        </div>
+
+        <div class="dive__hud" aria-hidden="true">
+          <div><small>Độ sâu</small><strong><span id="diveDepth">0.0</span> m</strong></div>
+          <div><small>Nín thở</small><strong id="diveTime">0:00</strong></div>
+          <div><small>Nước</small><strong>−1.8 °C</strong></div>
+        </div>
+
+        <div class="dive__caps">
+          <p class="dive__cap"><b>3 phút</b>Ice Bear có thể nín thở hơn ba phút cho một lần lặn.</p>
+          <p class="dive__cap"><b>10 cm</b>Lớp mỡ dày cả gang tay giữ ấm giữa làn nước dưới 0°C.</p>
+          <p class="dive__cap"><b>30 cm</b>Bàn chân trước to như cái đĩa, vừa là giày tuyết vừa là mái chèo.</p>
+        </div>
+        <p class="dive__credit">Ảnh: Rob Oo · Ludovic Bertron (ảnh dưới nước chụp trong bể kính)</p>
+      </div>
+    </section>
+
+    <!-- ============ REST ============ -->
+    <section class="rest" id="rest">
+      <div class="rest__media" data-par-bg><img src="assets/rest.jpg" alt="Gấu Bắc Cực nằm duỗi dài nghỉ trên tuyết" loading="lazy" decoding="async"></div>
+      <div class="rest__shade" aria-hidden="true"></div>
+      <div class="rest__in">
+        <p class="tag" data-reveal>06 — Giờ nghỉ</p>
+        <h2 class="h2" data-split>Ice Bear ngủ ở đâu cũng được. <em>Miễn là lạnh.</em></h2>
+        <p class="lead" data-reveal>Trong phim là cái tủ lạnh. Ngoài đời là một hố tuyết, lưng quay về hướng gió, mũi giấu dưới bàn chân.</p>
+      </div>
+    </section>
+
+    <!-- ============ TALK (aurora) ============ -->
+    <section class="talk" id="talk">
+      <canvas class="gl" id="auroraGL" data-tex="aurora" data-src="assets/aurora.jpg" data-mode="aurora" aria-hidden="true"></canvas>
+      <div class="talk__shade" aria-hidden="true"></div>
+      <div class="talk__in">
+        <p class="tag" data-reveal>07 — Đêm cực · Hỏi Ice Bear</p>
+        <p class="talk__text" id="talkText" aria-live="polite" data-reveal>Ice Bear đang nghe.</p>
+        <div class="talk__row" data-reveal>
+          <button class="btn" id="talkBtn" data-magnetic><span>Hỏi Ice Bear một câu</span></button>
+          <small>Ảnh: Không quân Hoa Kỳ · Joshua Strang</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARCTIC ============ -->
+    <section class="arctic" id="arctic">
+      <div class="arctic__copy">
+        <p class="tag" data-reveal>08 — Ngôi nhà đang tan</p>
+        <h2 class="h2" data-split>Băng mỏng dần. <em>Ice Bear không thích điều đó.</em></h2>
+        <p class="lead" data-reveal>Gấu Bắc Cực cần băng biển để săn mồi, di chuyển và nuôi con. Mỗi mùa hè, mặt băng ấy lại nhỏ đi một chút.</p>
+        <div class="arctic__facts">
+          <div data-reveal style="--d:0s"><strong>~<span data-count="26000">0</span></strong><small>cá thể ước tính còn trong tự nhiên</small></div>
+          <div data-reveal style="--d:.1s"><strong>−<span data-count="13">0</span>%</strong><small>băng biển tháng 9 mất đi mỗi thập kỷ kể từ 1979</small></div>
+        </div>
+        <div class="arctic__btns" data-reveal>
+          <a class="btn" href="https://polarbearsinternational.org" target="_blank" rel="noopener" data-magnetic><span>Polar Bears International</span></a>
+          <a class="btn btn--ghost" href="https://www.arcticwwf.org" target="_blank" rel="noopener" data-magnetic><span>WWF Arctic</span></a>
+        </div>
+      </div>
+      <div class="arctic__viz" id="arcticViz">
+        <div class="arctic__ring" aria-hidden="true"></div>
+        <div class="arctic__ice" id="arcticIce"><img src="assets/melt.jpg" alt="Băng biển Bắc Cực đang tan nhìn từ trên cao, loang lổ những vũng nước" loading="lazy" decoding="async"></div>
+        <div class="arctic__year" aria-hidden="true"><span id="arcticYear">1979</span><small>Băng biển mùa hè</small></div>
+        <figure class="ph arctic__thin" data-ph>
+          <img src="assets/thin.jpg" alt="Một con gấu Bắc Cực gầy trơ xương đứng trên mảng băng nhỏ" loading="lazy" decoding="async">
+          <figcaption>Svalbard, 2015 · Andreas Weith</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__say">Ice Bear cảm ơn bạn đã cuộn tới đây.</p>
+    <div class="footer__big" aria-hidden="true"><span>I</span><span>C</span><span>E</span><span class="sp"></span><span>B</span><span>E</span><span>A</span><span>R</span></div>
+    <div class="footer__row">
+      <p>Trang fan-made phi lợi nhuận. <em>We Bare Bears</em> và nhân vật Ice Bear thuộc bản quyền của Cartoon Network; trang này không dùng hình ảnh từ phim. Toàn bộ ảnh và phim là tư liệu thật từ Wikimedia Commons.</p>
+      <a class="btn btn--ghost" href="#top" data-magnetic><span>Lên đầu trang ↑</span></a>
+    </div>
+    <details class="credits">
+      <summary>Nguồn ảnh và giấy phép</summary>
+      <ul><li><a href="https://commons.wikimedia.org/wiki/File:Polar_Bears_Across_the_Arctic_Face_Shorter_Sea_Ice_Season_(29664357826)_(2).jpg" target="_blank" rel="noopener">Polar Bears Across the Arctic Face Shorter Sea Ice Season (2</a> — Mario Hoppmann / NASA Goddard · Public domain</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polarb%C3%A4r_13_2004-11-17.jpg" target="_blank" rel="noopener">Polarbär 13 2004-11-17</a> — Ansgar Walk · CC BY 2.5</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_Bear_AdF.jpg" target="_blank" rel="noopener">Polar Bear AdF</a> — Arturo de Frias Marques · CC BY-SA 4.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Arth_wen_Ursus_maritimus.jpg" target="_blank" rel="noopener">Arth wen Ursus maritimus</a> — Alun Williams333 · CC BY-SA 4.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_bear_(Ursus_maritimus)_in_the_drift_ice_region_north_of_Svalbard.jpg" target="_blank" rel="noopener">Polar bear (Ursus maritimus) in the drift ice region north o</a> — Andreas Weith · CC BY-SA 4.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_Bear_with_its_tongue_sticking_out.jpg" target="_blank" rel="noopener">Polar Bear with its tongue sticking out</a> — Christopher Michel · CC BY 2.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_bear_after_unlucky_hunt_for_a_seal.jpg" target="_blank" rel="noopener">Polar bear after unlucky hunt for a seal</a> — Andreas Weith · CC BY-SA 4.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_bear_(Ursus)_maritimus_female_with_its_cub,_Svalbard_(2).jpg" target="_blank" rel="noopener">Polar bear (Ursus) maritimus female with its cub, Svalbard (</a> — AWeith · CC BY-SA 4.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Dungarees_the_polar_bear_(Wapusk_National_Park)_(6375873931).jpg" target="_blank" rel="noopener">Dungarees the polar bear (Wapusk National Park) (6375873931)</a> — Emma · CC BY 2.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_bears_in_Alaska.webm" target="_blank" rel="noopener">Polar bears in Alaska</a> — Kiliii Yuyan · CC BY 3.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:ARCSIX_Analyzes_Arctic_Sea_Ice_Loss_(153113).webm" target="_blank" rel="noopener">ARCSIX Analyzes Arctic Sea Ice Loss (153113)</a> — Photographs and video by Gary Banziger (NASA Langley) and Ra · Public domain</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Curious_(202284623).jpeg" target="_blank" rel="noopener">Curious (202284623)</a> — Rob Oo · CC BY 3.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polar_bear_swimming_underwater_(2987555976).jpg" target="_blank" rel="noopener">Polar bear swimming underwater (2987555976)</a> — Ludovic Bertron from New York City, Usa · CC BY 2.0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Polarb%C3%A4r_3_2004-11-17.jpg" target="_blank" rel="noopener">Polarbär 3 2004-11-17</a> — Ansgar Walk · CC BY 2.5</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Aurora_borealis_over_Eielson_Air_Force_Base,_Alaska.jpg" target="_blank" rel="noopener">Aurora borealis over Eielson Air Force Base, Alaska</a> — United States Air Force photo by Senior Airman Joshua Strang · Public domain</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:View_from_above_(4370260875).jpg" target="_blank" rel="noopener">View from above (4370260875)</a> — U.S. Geological Survey from Reston, VA, USA · Public domain</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Endangered_arctic_-_starving_polar_bear_(cropped).jpg" target="_blank" rel="noopener">Endangered arctic - starving polar bear (cropped)</a> — Andreas Weith · CC BY-SA 4.0</li></ul>
+    </details>
+  </footer>
+
+  <script src="js/tex.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ice Bear — Bắc Cực không có điểm yếu</title>
+  <meta name="description" content="Landing page fan-made về Ice Bear và thế giới Bắc Cực: cực quang, băng trôi, và chú gấu trắng ít lời nhất quả đất.">
+  <meta name="theme-color" content="#050b1f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='14' cy='14' r='10' fill='%23f4f9fd'/%3E%3Ccircle cx='50' cy='14' r='10' fill='%23f4f9fd'/%3E%3Ccircle cx='32' cy='34' r='27' fill='%23f4f9fd'/%3E%3Ccircle cx='22' cy='30' r='3' fill='%231b2433'/%3E%3Ccircle cx='42' cy='30' r='3' fill='%231b2433'/%3E%3Cellipse cx='32' cy='40' rx='6' ry='4' fill='%231b2433'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Unbounded:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fx.css">
+</head>
+<body class="is-loading">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <svg class="loader__face" viewBox="0 0 120 110">
+        <circle cx="26" cy="24" r="18" fill="#f4f9fd"/><circle cx="94" cy="24" r="18" fill="#f4f9fd"/>
+        <circle cx="26" cy="25" r="8" fill="#c9d9e6"/><circle cx="94" cy="25" r="8" fill="#c9d9e6"/>
+        <ellipse cx="60" cy="60" rx="52" ry="46" fill="#f4f9fd"/>
+        <ellipse cx="60" cy="74" rx="22" ry="16" fill="#fff"/>
+        <circle class="loader__eye" cx="40" cy="54" r="5" fill="#1b2433"/>
+        <circle class="loader__eye" cx="80" cy="54" r="5" fill="#1b2433"/>
+        <ellipse cx="60" cy="67" rx="8" ry="5.5" fill="#1b2433"/>
+        <path d="M60 72v6M54 81h12" stroke="#1b2433" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="loader__num"><span id="loaderNum">0</span><i>°N</i></div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <p class="loader__txt">Ice Bear đang làm lạnh trang web…</p>
+    </div>
+  </div>
+
+  <!-- ============ GLOBAL FX ============ -->
+  <div class="cursor" aria-hidden="true"><div class="cursor__ring"></div><div class="cursor__dot"></div></div>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" aria-label="Về đầu trang">
+      <svg viewBox="0 0 64 64" width="34" height="34"><circle cx="14" cy="14" r="10" fill="#f4f9fd"/><circle cx="50" cy="14" r="10" fill="#f4f9fd"/><circle cx="32" cy="34" r="27" fill="#f4f9fd"/><circle cx="22" cy="30" r="3" fill="#1b2433"/><circle cx="42" cy="30" r="3" fill="#1b2433"/><ellipse cx="32" cy="40" rx="6" ry="4" fill="#1b2433"/></svg>
+      <span>ICE&nbsp;BEAR</span>
+    </a>
+    <nav class="nav__links" aria-label="Điều hướng chính">
+      <a href="#about">Là ai</a>
+      <a href="#skills">Kỹ năng</a>
+      <a href="#dive">Lặn</a>
+      <a href="#fridge">Tủ lạnh</a>
+      <a href="#arctic">Bắc Cực</a>
+    </nav>
+    <a class="btn btn--ghost nav__cta" href="#talk" data-magnetic>Hỏi Ice Bear</a>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <div class="hero-pin" id="heroPin">
+    <section class="hero" id="top">
+      <canvas class="hero__stars" id="stars" aria-hidden="true"></canvas>
+      <canvas class="hero__aurora" id="aurora" aria-hidden="true"></canvas>
+      <span class="hero__shoot" aria-hidden="true"></span>
+      <span class="hero__shoot hero__shoot--2" aria-hidden="true"></span>
+      <div class="hero__moon" data-px data-mx="10" data-z="0.25" data-ty="-0.08" aria-hidden="true"></div>
+
+      <svg class="hero__layer hero__far" data-px data-mx="8" data-z="0.3" data-ty="0.05" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="gFar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b5c95"/><stop offset="1" stop-color="#12305c"/></linearGradient></defs>
+        <path fill="url(#gFar)" d="M0 400V260l120-80 100 60 120-120 130 130 90-50L700 90l140 140 100-60 140-110 130 160 110-60 120 80v160z"/>
+        <path fill="#fff" opacity=".16" d="M340 120l-52 52 40-12 28 26 30-16 38 14zM700 90l-62 62 46-14 30 30 36-20 44 26zM1080 60l-70 55 52-12 26 30 34-22 50 36z"/>
+      </svg>
+
+      <div class="hero__title-wrap" data-px data-mx="-14" data-z="0.6" data-ty="-0.1" data-pow="1.3">
+        <p class="hero__eyebrow" data-intro style="--d:.15s"><i></i>90°00′N · Bắc Băng Dương · −40°C</p>
+        <h1 class="hero__title" aria-label="Ice Bear">
+          <span class="l" style="--i:0">I</span><span class="l" style="--i:1">C</span><span class="l" style="--i:2">E</span><span class="sp"></span><span class="l" style="--i:3">B</span><span class="l" style="--i:4">E</span><span class="l" style="--i:5">A</span><span class="l" style="--i:6">R</span>
+        </h1>
+      </div>
+
+      <svg class="hero__layer hero__mid" data-px data-mx="20" data-z="2.2" data-ty="0.04" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9f1ff"/><stop offset="1" stop-color="#4f97d1"/></linearGradient></defs>
+        <path fill="url(#gMid)" d="M0 400V290l90-50 70 40 100-90 70 80 90 30 100 100zM900 400l80-120 80-60 70 70 90-110 80 80 80-30 60 60v110z"/>
+        <path fill="#0b2c58" opacity=".28" d="M260 190l70 80 90 30 100 100H300zM1220 180l80 80 80-30 60 60v110h-180z"/>
+      </svg>
+
+      <div class="hero__water" data-px data-mx="0" data-z="2.6" data-ty="0" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <div class="hero__floe" data-px data-mx="34" data-z="8" data-ty="-0.2" data-pow="3">
+        <div class="hero__floe-in">
+          <div class="floe">
+            <div class="bear-slot" data-bear="hero"></div>
+            <svg class="floe__ice" viewBox="0 0 520 120" aria-hidden="true">
+              <defs><linearGradient id="gFloe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9dcff"/><stop offset="1" stop-color="#3b84c4"/></linearGradient></defs>
+              <path fill="url(#gFloe)" d="M20 40l100 26 180 4 170-12 30-22-12 34-68 30-140 12-150-8-90-28z"/>
+              <path fill="#f3faff" d="M20 40L90 12 240 4l160 6 100 26-30 22-170 12-180-4z"/>
+              <path fill="#cfeaff" d="M150 30l60-8 40 10-50 12zM330 24l70 4 30 14-80 6z" opacity=".7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__copy">
+        <p data-intro style="--d:.9s">Ice Bear không nói nhiều.<br>Ice Bear để trang web này nói thay.</p>
+        <div class="hero__btns" data-intro style="--d:1.05s">
+          <a class="btn" href="#about" data-magnetic><span>Khám phá Bắc Cực</span>
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v16m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__hint" data-intro style="--d:1.3s" aria-hidden="true"><span>Cuộn xuống</span><i></i></div>
+      <div class="hero__white" id="heroWhite"></div>
+    </section>
+    </div>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__row" data-dir="-1"><div class="marquee__track">
+        <span>Ice Bear đồng ý</span><b>✦</b><span class="o">Ice Bear không có điểm yếu</span><b>✦</b><span>Ice Bear ngủ trong tủ lạnh</span><b>✦</b><span class="o">Ice Bear nấu bữa tối</span><b>✦</b>
+      </div></div>
+      <div class="marquee__row" data-dir="1"><div class="marquee__track">
+        <span class="o">Ursus maritimus</span><b>❄</b><span>Bắc Cực</span><b>❄</b><span class="o">Băng trôi</span><b>❄</b><span>Cực quang</span><b>❄</b><span class="o">−40°C</span><b>❄</b><span>Gấu trắng</span><b>❄</b>
+      </div></div>
+    </section>
+
+    <!-- ============ ABOUT / MANIFESTO ============ -->
+    <section class="about" id="about">
+      <p class="tag" data-reveal>01 — Ice Bear là ai</p>
+      <p class="about__text" id="manifesto">Em út của ba anh em gấu. Ít lời nhất, nhưng làm được nhiều nhất. Nấu ăn, võ thuật, nhảy múa, sửa máy — Ice Bear lo hết. Và Ice Bear không bao giờ khoe. Ice Bear chỉ lặng lẽ đứng đó, mặt lạnh như băng, tim ấm như bếp.</p>
+      <div class="about__meta">
+        <div data-reveal style="--d:0s"><small>Loài</small><strong>Gấu Bắc Cực</strong></div>
+        <div data-reveal style="--d:.08s"><small>Chỗ ngủ</small><strong>Tủ lạnh</strong></div>
+        <div data-reveal style="--d:.16s"><small>Xưng hô</small><strong>Ngôi thứ ba</strong></div>
+        <div data-reveal style="--d:.24s"><small>Điểm yếu</small><strong>Không có</strong></div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS (horizontal pinned) ============ -->
+    <section class="skills" id="skills">
+      <div class="skills__stage">
+        <div class="skills__track" id="skillsTrack">
+          <div class="skills__intro">
+            <p class="tag">02 — Kỹ năng</p>
+            <h2>Ice Bear<br>làm được<br><em>mọi thứ.</em></h2>
+            <p class="skills__sub">Cứ cuộn tiếp. Ice Bear sẽ tự trình bày. <span aria-hidden="true">→</span></p>
+          </div>
+
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">01</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><circle cx="20" cy="27" r="13"/><path d="M32 21l12-7"/><path d="M14 27a6 6 0 0 1 6-6"/></svg>
+            <h3>Bếp trưởng</h3>
+            <p>Từ sushi đến bánh kếp. Ice Bear nấu, mọi người im lặng ăn.</p>
+            <div class="card__lv"><i style="--v:100%"></i></div>
+          </article>
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">02</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><path d="M24 4l5 15 15 5-15 5-5 15-5-15-15-5 15-5z"/><circle cx="24" cy="24" r="3"/></svg>
+            <h3>Võ thuật</h3>
+            <p>Ra đòn trước khi bạn kịp chớp mắt. Nhưng Ice Bear chỉ ra đòn khi cần.</p>
+            <div class="card__lv"><i style="--v:98%"></i></div>
+          </article>
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">03</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><circle cx="13" cy="37" r="6"/><circle cx="36" cy="33" r="6"/><path d="M19 37V11l23-5v27"/><path d="M19 19l23-5"/></svg>
+            <h3>Vũ công</h3>
+            <p>Salsa, breakdance, ballet. Chân rất dẻo, mặt không đổi sắc.</p>
+            <div class="card__lv"><i style="--v:94%"></i></div>
+          </article>
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">04</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><path d="M6 9h36v24H23l-11 9v-9H6z"/><path d="M15 18h18M15 25h11"/></svg>
+            <h3>Đa ngôn ngữ</h3>
+            <p>Ice Bear nói ít, nhưng nói được bằng rất nhiều thứ tiếng.</p>
+            <div class="card__lv"><i style="--v:90%"></i></div>
+          </article>
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">05</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><path d="M30 6a10 10 0 0 0-9 14L6 35l7 7 15-15a10 10 0 0 0 14-9l-7 5-5-5z"/></svg>
+            <h3>Thợ sửa</h3>
+            <p>Robot hút bụi, xe máy, trái tim tan vỡ. Ice Bear sửa hết.</p>
+            <div class="card__lv"><i style="--v:96%"></i></div>
+          </article>
+          <article class="card" data-tilt>
+            <div class="card__glare"></div><span class="card__n">06</span>
+            <svg class="card__ico" viewBox="0 0 48 48"><path d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path d="M19 7l5 5 5-5M19 41l5-5 5 5"/></svg>
+            <h3>Bình tĩnh</h3>
+            <p>Nhiệt độ cảm xúc luôn ổn định ở mức −40°C. Không gì làm Ice Bear hoảng.</p>
+            <div class="card__lv"><i style="--v:100%"></i></div>
+          </article>
+
+          <div class="skills__end"><h2>Hết.<br><em>Ice Bear khiêm tốn.</em></h2></div>
+        </div>
+        <div class="skills__bar"><span id="skillsBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ DANCE ============ -->
+    <section class="dance" id="dance">
+      <div class="dance__beams" aria-hidden="true">
+        <i style="--x:12%;--c:rgba(94,255,193,.55);--t:3.1s"></i><i style="--x:34%;--c:rgba(143,211,255,.5);--t:4.3s"></i><i style="--x:56%;--c:rgba(167,139,250,.55);--t:2.7s"></i><i style="--x:76%;--c:rgba(94,255,193,.45);--t:3.7s"></i><i style="--x:92%;--c:rgba(76,201,240,.5);--t:4.9s"></i>
+      </div>
+      <div class="dance__word" aria-hidden="true">NHẢY ĐI</div>
+      <div class="dance__copy">
+        <p class="tag tag--light" data-reveal>Giờ giải lao — Sàn nhảy</p>
+        <h2 class="h2 h2--light" data-split>Mặt lạnh. <em>Chân nóng.</em></h2>
+        <p class="lead" data-reveal>Ice Bear không cười khi nhảy. Ice Bear cũng không cần cười. Bật nhạc lên rồi xem.</p>
+        <button class="btn btn--aurora" id="danceBtn" data-magnetic aria-pressed="false"><span>Bật nhạc cho Ice Bear</span></button>
+        <small data-reveal>Có âm thanh — nhạc được trình duyệt tự tổng hợp, không tải file nào.</small>
+      </div>
+      <div class="dance__stage" data-reveal>
+        <div class="dance__spin"><div class="bear-slot" data-bear="dance"></div></div>
+        <div class="dance__floor"></div>
+      </div>
+      <div class="dance__eq" id="danceEq" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" id="stats">
+      <p class="tag" data-reveal>03 — Gấu trắng ngoài đời thật</p>
+      <h2 class="h2" data-split>Không phải phim. <em>Số thật.</em></h2>
+      <div class="stats__grid">
+        <div class="stat" data-reveal style="--d:0s"><div class="stat__n"><span data-count="700">0</span><i>kg</i></div><p>Cân nặng của một gấu đực trưởng thành cỡ lớn.</p></div>
+        <div class="stat" data-reveal style="--d:.1s"><div class="stat__n"><span data-count="40">0</span><i>km/h</i></div><p>Tốc độ chạy nước rút trên băng. Đừng thử chạy đua.</p></div>
+        <div class="stat" data-reveal style="--d:.2s"><div class="stat__n"><span data-count="10">0</span><i>km/h</i></div><p>Tốc độ bơi, với bàn chân trước làm mái chèo.</p></div>
+        <div class="stat" data-reveal style="--d:.3s"><div class="stat__n"><span data-count="42">0</span><i>răng</i></div><p>Và lớp da bên dưới bộ lông trắng thật ra màu đen.</p></div>
+      </div>
+      <svg class="stats__wave" viewBox="0 0 2880 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 50Q180 0 360 50T720 50T1080 50T1440 50T1800 50T2160 50T2520 50T2880 50V100H0z"/>
+      </svg>
+    </section>
+
+    <!-- ============ DIVE (pinned) ============ -->
+    <section class="dive" id="dive">
+      <div class="dive__stage">
+        <div class="dive__rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="dive__dark" id="diveDark" aria-hidden="true"></div>
+        <div class="dive__bubbles" id="bubbles" aria-hidden="true"></div>
+
+        <div class="dive__fish dive__fish--a" aria-hidden="true"><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg></div>
+        <div class="dive__fish dive__fish--b" aria-hidden="true"><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg></div>
+        <div class="dive__fish dive__fish--c" aria-hidden="true"><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg><svg viewBox="0 0 60 30"><path d="M4 15C14 2 34 2 44 15 34 28 14 28 4 15zM42 15l14-10v20z"/></svg></div>
+
+        <div class="dive__head" id="diveHead">
+          <p class="tag tag--light">04 — Dưới mặt băng</p>
+          <h2>Lặn xuống<br>cùng <em>Ice Bear</em></h2>
+        </div>
+
+        <div class="dive__bear" id="diveBear" aria-hidden="true">
+          <svg viewBox="0 0 340 170">
+            <defs><linearGradient id="gSwim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c4dcee"/></linearGradient></defs>
+            <circle cx="38" cy="78" r="11" fill="#e3eef6"/>
+            <g class="paddle paddle--b"><ellipse cx="86" cy="122" rx="17" ry="36" fill="#d5e5f1"/></g>
+            <g class="paddle paddle--f"><ellipse cx="216" cy="122" rx="17" ry="36" fill="#d5e5f1"/></g>
+            <ellipse cx="150" cy="82" rx="114" ry="50" fill="url(#gSwim)"/>
+            <g class="paddle paddle--b2"><ellipse cx="106" cy="124" rx="17" ry="36" fill="#f4f9fd"/></g>
+            <g class="paddle paddle--f2"><ellipse cx="236" cy="124" rx="17" ry="36" fill="#f4f9fd"/></g>
+            <circle cx="252" cy="38" r="13" fill="#f4f9fd"/><circle cx="252" cy="39" r="6" fill="#c9d9e6"/>
+            <ellipse cx="272" cy="70" rx="44" ry="36" fill="#f9fcff"/>
+            <ellipse cx="304" cy="78" rx="18" ry="14" fill="#fff"/>
+            <circle cx="284" cy="62" r="4.4" fill="#1b2433"/>
+            <ellipse cx="318" cy="74" rx="7" ry="5" fill="#1b2433"/>
+            <path d="M302 86h12" stroke="#1b2433" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="dive__hud" aria-hidden="true">
+          <div><small>Độ sâu</small><strong><span id="diveDepth">0.0</span> m</strong></div>
+          <div><small>Nín thở</small><strong id="diveTime">0:00</strong></div>
+        </div>
+
+        <div class="dive__caps">
+          <p class="dive__cap"><b>3 phút</b>Gấu Bắc Cực có thể nín thở hơn ba phút cho một lần lặn săn mồi.</p>
+          <p class="dive__cap"><b>10 cm</b>Lớp mỡ dày cả gang tay giữ ấm cơ thể giữa làn nước gần 0°C.</p>
+          <p class="dive__cap"><b>30 cm</b>Bàn chân trước to như cái đĩa — vừa là giày đi tuyết, vừa là mái chèo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRIDGE ============ -->
+    <section class="fridge-sec" id="fridge">
+      <div class="fridge-sec__copy">
+        <p class="tag tag--light" data-reveal>05 — Phòng ngủ</p>
+        <h2 class="h2 h2--light" data-split>Người ta ngủ trên giường. <em>Ice Bear ngủ trong tủ lạnh.</em></h2>
+        <p class="lead" data-reveal>Mát, yên tĩnh, có sẵn đồ ăn khuya. Một lựa chọn bất động sản hoàn hảo. Gõ cửa nhẹ thôi nhé.</p>
+        <button class="btn btn--aurora" id="fridgeBtn" data-magnetic aria-expanded="false" aria-controls="fridgeBox"><span>Mở tủ lạnh</span></button>
+        <p class="fridge-sec__note" id="fridgeNote" aria-live="polite">&nbsp;</p>
+      </div>
+
+      <div class="fridge-sec__scene" data-reveal>
+        <div class="fridge" id="fridgeBox" role="button" tabindex="0" aria-label="Tủ lạnh của Ice Bear — bấm để mở">
+          <div class="fridge__body">
+            <div class="fridge__freezer"><i></i></div>
+            <div class="fridge__inside">
+              <div class="fridge__light"></div>
+              <div class="fridge__shelf"></div>
+              <span class="zzz" style="--i:0">z</span><span class="zzz" style="--i:1">z</span><span class="zzz" style="--i:2">Z</span>
+              <svg class="fridge__bear" viewBox="0 0 240 190">
+                <ellipse cx="128" cy="128" rx="106" ry="58" fill="#e9f2f9"/>
+                <ellipse cx="200" cy="150" rx="26" ry="18" fill="#f4f9fd"/>
+                <circle cx="40" cy="74" r="15" fill="#f4f9fd"/><circle cx="40" cy="75" r="7" fill="#c9d9e6"/>
+                <circle cx="104" cy="66" r="15" fill="#f4f9fd"/><circle cx="104" cy="67" r="7" fill="#c9d9e6"/>
+                <ellipse cx="72" cy="114" rx="56" ry="46" fill="#f9fcff"/>
+                <ellipse cx="68" cy="130" rx="22" ry="15" fill="#fff"/>
+                <path d="M42 108q8 6 16 0M84 106q8 6 16 0" stroke="#1b2433" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <ellipse cx="68" cy="123" rx="8" ry="5.5" fill="#1b2433"/>
+                <path d="M62 136h12" stroke="#1b2433" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fridge__door">
+              <div class="fridge__door-front">
+                <i class="fridge__handle"></i>
+                <span class="magnet magnet--1"></span><span class="magnet magnet--2"></span><span class="magnet magnet--3"></span>
+                <span class="fridge__sticky">Đừng làm phiền.<br><b>— Ice Bear</b></span>
+              </div>
+              <div class="fridge__door-back"><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="fridge__mist"><i></i><i></i><i></i><i></i></div>
+          <div class="fridge__shadow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TALK ============ -->
+    <section class="talk" id="talk">
+      <div class="talk__bear" id="talkBear" data-reveal>
+        <div class="bear-slot" data-bear="talk"></div>
+      </div>
+      <div class="talk__copy">
+        <p class="tag" data-reveal>06 — Phỏng vấn độc quyền</p>
+        <div class="talk__bubble" data-reveal><p id="talkText" aria-live="polite">Ice Bear đang nghe.</p></div>
+        <div class="talk__row" data-reveal>
+          <button class="btn btn--dark" id="talkBtn" data-magnetic><span>Hỏi Ice Bear một câu</span></button>
+          <small>Hoặc chọc thẳng vào bụng Ice Bear.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARCTIC / CONSERVATION ============ -->
+    <section class="arctic" id="arctic">
+      <div class="arctic__copy">
+        <p class="tag tag--light" data-reveal>07 — Ngôi nhà đang tan</p>
+        <h2 class="h2 h2--light" data-split>Băng mỏng dần. <em>Ice Bear không thích điều đó.</em></h2>
+        <p class="lead" data-reveal>Gấu Bắc Cực cần băng biển để săn mồi, di chuyển và nuôi con. Mỗi mùa hè, tảng băng ấy lại nhỏ đi một chút.</p>
+        <div class="arctic__facts">
+          <div data-reveal style="--d:0s"><strong>~<span data-count="26000">0</span></strong><small>cá thể gấu Bắc Cực ước tính còn trong tự nhiên</small></div>
+          <div data-reveal style="--d:.1s"><strong>−<span data-count="13">0</span>%</strong><small>băng biển tháng 9 mất đi mỗi thập kỷ kể từ 1979</small></div>
+        </div>
+        <div class="arctic__btns" data-reveal>
+          <a class="btn btn--aurora" href="https://polarbearsinternational.org" target="_blank" rel="noopener" data-magnetic><span>Polar Bears International</span></a>
+          <a class="btn btn--ghost" href="https://www.arcticwwf.org" target="_blank" rel="noopener" data-magnetic><span>WWF Arctic</span></a>
+        </div>
+      </div>
+      <div class="arctic__viz" id="arcticViz" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs><linearGradient id="gIce" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#8fd3ff"/></linearGradient></defs>
+          <path class="arctic__ghost" d="M200 24l92 26 66 68 18 92-40 92-84 62-104 6-86-52-42-94 22-98 68-76z"/>
+          <g id="arcticIce"><path fill="url(#gIce)" d="M200 24l92 26 66 68 18 92-40 92-84 62-104 6-86-52-42-94 22-98 68-76z"/>
+          <path fill="#fff" opacity=".6" d="M200 24l92 26-70 60-90-34zM20 224l110-10 40 110-108-6z"/>
+          <path d="M132 76l90 34 70-60M222 110l-52 104 166 88M170 214L20 224M170 214l-24 156" fill="none" stroke="#5aa9e0" stroke-width="1.5" opacity=".6"/></g>
+        </svg>
+        <div class="arctic__year"><span id="arcticYear">1979</span><small>Băng biển mùa hè</small></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer__say">Ice Bear cảm ơn bạn đã cuộn tới đây.</p>
+    <div class="footer__big" aria-hidden="true"><span>I</span><span>C</span><span>E</span><span class="sp"></span><span>B</span><span>E</span><span>A</span><span>R</span></div>
+    <div class="footer__row">
+      <p>Trang fan-made phi lợi nhuận, làm vì yêu gấu. <em>We Bare Bears</em> và nhân vật Ice Bear thuộc bản quyền của Cartoon Network. Hình minh hoạ trên trang được vẽ lại bằng SVG.</p>
+      <a class="btn btn--ghost" href="#top" data-magnetic><span>Lên đầu trang ↑</span></a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/fx.js"></script>
+</body>
+</html>
